@@ -17,3 +17,23 @@ class Book{
     }
 
 }
+// Task 2: Create a Section Class
+class Section {
+    constructor(name){
+        this.name = name;
+        this.books = [];
+    }
+    addBook(book) {
+        this.books.push(book); // add a book
+    }
+    getAvailableBooks(){
+        return this.books.filter(book => book.isAvailable).length; // retreiving the count of books
+    }
+    listBooks(){
+        this.books.forEach(book => {
+            console.log(`${book.getDetails()} Books Available: ${book.isAvailable}`); // listing the books in the section
+            
+        }
+        );
+    }
+}
