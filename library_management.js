@@ -29,6 +29,11 @@ class Section {
     getAvailableBooks(){
         return this.books.filter(book => book.isAvailable).length; // retreiving the count of books
     }
+    //Task 5: Handle Books Borrowing and Returning
+    calculateTotalBooksAvailable(){
+        return this.books.filter(book => book.isAvailable).length; //returns number of books available
+    }
+    
     listBooks(){
         this.books.forEach(book => {
             console.log(`${book.getDetails()} Books Available: ${book.isAvailable}`); // listing the books in the section
