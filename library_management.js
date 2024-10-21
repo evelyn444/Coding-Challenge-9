@@ -29,11 +29,11 @@ class Section {
     getAvailableBooks(){
         return this.books.filter(book => book.isAvailable).length; // retreiving the count of books
     }
-    //Task 5: Handle Books Borrowing and Returning
+    //Task 5: Handle Books Borrowing and Returning (had to add it here)
     calculateTotalBooksAvailable(){
         return this.books.filter(book => book.isAvailable).length; //returns number of books available
     }
-    
+
     listBooks(){
         this.books.forEach(book => {
             console.log(`${book.getDetails()} Books Available: ${book.isAvailable}`); // listing the books in the section
@@ -89,3 +89,30 @@ class VIPPatron extends Patron {
         }
     }
 }
+//Task 6: Create and Manage Sections and Patrons
+
+//Sections
+const fiction = new Section("Fiction");
+const science = new Section("Science");
+//Books
+const book1 = new Book("1984", "George Orwell", "1234567890");
+const book2 = new Book("Brave New World", "Aldous Huxley", "0987654321");
+const book3 = new Book("The Selfish Gene", "Richard Dawkins", "1122334455");
+//Add books to sections
+fiction.addBook(book1);
+fiction.addBook(book2);
+science.addBook(book3);
+//Patrons
+const regularPatron = new Patron("John Doe");
+const vipPatron = new VIPPatron("Jane Smith", true);
+// Regular patron tries to borrow a book
+regularPatron.borrowBook(book1);
+// VIP patron tries to borrow a book (has priority)
+vipPatron.borrowBook(book1);
+// Return the book
+regularPatron.returnBook(book1);
+// List books and availability
+fiction.listBooks();
+// Calculate total available books in each section
+console.log(`Total available books in Fiction: ${fiction.getAvailableBooks()}`);
+console.log(`Total available books in Science: ${science.getAvailableBooks()}`);
